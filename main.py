@@ -1,19 +1,20 @@
-from mytree import MaxHeap 
-f=open('words_27.txt','r')
-lines=f.readlines()
-for i in lines:
-	print (i)
+from mytree import MaxHeap
 
-f=open('sorted.txt', 'w')
-def simpleHeapSort( lines ):
-    n = len(lines)
-    heap = MaxHeap(n)
+def heapsort (tree):
+  l = []
+  while tree.len() != 0:
+    l.append(tree.extract())
+  return l[::-1] 
 
-    for item in lines :
-        heap.add( item )
-
-    for i in range( n, 0, -1 ) :
-        lines[i] = heap.extract()
-        print(lines[i])
+t = MaxHeap()
+with open("words_27.txt","r") as f:
+    lines = f.readlines()
+    for word in lines:
+      t.add(word[:-1])
+        
+    array = heapsort(t)
+    
+for word in array:
+  print(word)    
 
 
